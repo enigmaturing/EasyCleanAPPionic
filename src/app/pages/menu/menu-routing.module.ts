@@ -6,7 +6,25 @@ import { MenuPage } from './menu.page';
 const routes: Routes = [
   {
     path: '',
-    component: MenuPage
+    component: MenuPage,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../dashboard/dashboard.module').then( m => m.DashboardPageModule)
+      },
+      {
+        path: 'sales-list',
+        loadChildren: () => import('../sales-list/sales-list.module').then( m => m.SalesListPageModule)
+      },
+      {
+        path: 'clients-list',
+        loadChildren: () => import('../clients-list/clients-list.module').then( m => m.ClientsListPageModule)
+      },
+      {
+        path: 'machines-list',
+        loadChildren: () => import('../machines-list/machines-list.module').then( m => m.MachinesListPageModule)
+      },
+    ]
   }
 ];
 
