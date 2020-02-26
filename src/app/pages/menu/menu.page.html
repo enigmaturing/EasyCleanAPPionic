@@ -15,7 +15,7 @@
           </ion-item>
         </ion-menu-toggle>
 
-        <ion-item tappable routerLink="/login" routerDirection="root">
+        <ion-item tappable (click)='logout()' routerDirection="root">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label>Log out</ion-label>
         </ion-item>

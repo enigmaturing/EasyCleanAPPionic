@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertsService } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-menu',
@@ -30,9 +32,16 @@ export class MenuPage implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private router: Router,
+              private alertsService: AlertsService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.alertsService.presentToast('Successfully logged out');
+    this.router.navigate(['/login']);
   }
 
 }
