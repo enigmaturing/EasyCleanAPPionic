@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  // apiUrl: 'http://localhost:5000/api/auth/';
+  // Cambiamos localhost a la api en el servidor productivo también en este environment,
+  // para comunicarnos con la api productiva también en la versión no productiva de nuestra
+  // app.
   apiUrl: 'http://167.172.33.60/api/'
 };
 
