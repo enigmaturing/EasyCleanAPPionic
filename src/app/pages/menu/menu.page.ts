@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertsService } from 'src/app/services/alerts.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,29 +14,38 @@ export class MenuPage implements OnInit {
     {
       title: 'Dashboard',
       icon: 'apps-outline',
-      url: '/menu/dashboard'
+      url: '/menu/dashboard',
+      roles: ['Admin']
     },
     {
       title: 'Sales',
       icon: 'cash-outline',
-      url: '/menu/sales'
+      url: '/menu/sales',
+      roles: ['Admin', 'Employee']
     },
     {
       title: 'Clients',
       icon: 'people-circle-outline',
-      url: '/menu/clients'
+      url: '/menu/clients',
+      roles: ['Admin', 'Employee']
     },
     {
       title: 'Machines',
       icon: 'water-outline',
-      url: '/menu/machines'
+      url: '/menu/machines',
+      roles: ['Admin', 'Employee', 'Client']
     },
   ];
 
   constructor(private router: Router,
-              private alertsService: AlertsService) { }
+              private alertsService: AlertsService,
+              private authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  checkRoles(allowedRoles) {
+    return (this.authService.roleMatch(allowedRoles));
   }
 
   logout() {

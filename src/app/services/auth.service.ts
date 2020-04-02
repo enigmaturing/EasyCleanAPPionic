@@ -35,4 +35,20 @@ export class AuthService {
   register(model: any) {
     return this.http.post(this.baseUrl + 'register', model);
   }
+
+  // Reads from the JWT-Token the roles the logged in user belongs to
+  // and then returns true if the allowedRoles passed as a parameter
+  // are contained in the JWT-Token
+  roleMatch(allowedRoles): boolean {
+    const userRoles = this.decodedToken.role as Array<string>;
+    let isMatch = false;
+    // loop through roles we are checking
+    allowedRoles.forEach(element => {
+      if (userRoles.includes(element)) {
+        isMatch = true;
+        return; // return from this loop iteration
+      }
+    });
+    return isMatch; // return from method with value of isMatch
+  }
 }
