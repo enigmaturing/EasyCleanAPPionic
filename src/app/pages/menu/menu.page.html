@@ -9,7 +9,7 @@
     <ion-content>
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-          <ion-item tappable [routerLink]="p.url" routerDirection="root" *ngIf="checkRoles(p.roles)">
+          <ion-item tappable [routerLink]="p.url" routerDirection="root" *appHasRole="p.roles">
             <ion-icon [name]="p.icon" slot="start"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
