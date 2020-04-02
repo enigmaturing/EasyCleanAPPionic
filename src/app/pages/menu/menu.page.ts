@@ -35,6 +35,12 @@ export class MenuPage implements OnInit {
       url: '/menu/machines',
       roles: ['Admin', 'Employee', 'Client']
     },
+    {
+      title: 'My profile',
+      icon: 'person-circle-outline',
+      url: '/menu/my-profile',
+      roles: ['Admin', 'Employee', 'Client']
+    },
   ];
 
   constructor(private router: Router,

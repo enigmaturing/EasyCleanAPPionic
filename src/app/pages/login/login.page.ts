@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      this.router.navigate(['/menu/dashboard']);
+      this.router.navigate(['/menu/my-profile']);
     }, error => {
       this.alerts.presentAlert('Attention', 'Wrong password or email', '', 'OK');
       this.model.password = '';
