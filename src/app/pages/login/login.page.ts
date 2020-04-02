@@ -25,6 +25,10 @@ export class LoginPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.model.password = '';
+  }
+
   ngOnInit() {
   }
 
