@@ -16,7 +16,7 @@
         </ion-thumbnail>
         <ion-label>
           <h3>{{machinUsage.date | date:'dd.MM.yyyy'}}</h3>
-          <p>"{{machinUsage.tariffName}}" Total: {{ machinUsage.quantityOfServicesBooked }} €</p>
+          <p>{{machinUsage.quantityOfServicesBooked}} x "{{machinUsage.tariffName}}" Total: {{ machinUsage.totalAmountPaid }} €</p>
         </ion-label>
       </ion-item>
     </div>
