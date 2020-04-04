@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list *ngIf="isData">
+    <div *ngIf="user.machineUsages.length >0" >
+      <ion-item *ngFor="let machinUsage of user.machineUsages">
+        <ion-thumbnail slot="start">
+          <img src={{machinUsage.iconUrl}}>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{machinUsage.date | date:'dd.MM.yyyy'}}</h3>
+          <p>"{{machinUsage.tariffName}}" Total: {{ machinUsage.quantityOfServicesBooked }} €</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div *ngIf="user.machineUsages.length === 0">
+      <ion-text>You have not make usage of our machines yet :(</ion-text>
+    </div>
+  </ion-list>
 </ion-content>
