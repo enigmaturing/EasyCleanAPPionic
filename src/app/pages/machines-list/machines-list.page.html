@@ -8,12 +8,15 @@
 </ion-header>
 
 <ion-content>
+  <div class="ion-padding">
+    <ion-text color="primary"><h1>Select a type of machine:</h1></ion-text>
+  </div>
   <div class="container">
     <div class="scroll" scrollY="true" style="height: 100%;">
       <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;">
         <img [src]="machineGroup.iconUrl" />
         <ion-card-header>
-          <ion-card-title>{{machineGroup.typeName}}</ion-card-title>
+          <ion-card-title color="primary">{{machineGroup.typeName}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </div>
