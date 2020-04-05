@@ -8,17 +8,61 @@
 </ion-header>
 
 <ion-content>
+
   <div class="ion-padding">
-    <ion-text color="primary"><h1>Select a type of machine:</h1></ion-text>
+    <ion-text *ngIf="step===0" color="primary"><h1>Select a type of machine:</h1></ion-text>
+    <ion-text *ngIf="step===1" color="primary"><h1>Select a tariff:</h1></ion-text>
+    <ion-text *ngIf="step===2" color="primary"><h1>Select an available machine:</h1></ion-text>
   </div>
-  <div class="container">
+
+  <div class="container" *ngIf="isData && step === 0">
     <div class="scroll" scrollY="true" style="height: 100%;">
-      <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;">
+      <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;"
+                (click)="selectMachineGroup(machineGroup.id)">
         <img [src]="machineGroup.iconUrl" />
         <ion-card-header>
           <ion-card-title color="primary">{{machineGroup.typeName}}</ion-card-title>
         </ion-card-header>
+        <ion-card-content>
+          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+        </ion-card-content>
       </ion-card>
     </div>
   </div>
+
+  <div class="container" *ngIf="step === 1">
+    <div class="scroll" scrollY="true" style="height: 100%;">
+      <ion-card *ngFor="let tariff of availableTariffs" style="width: 50%; height: 90%; display: inline-block;"
+                (click)="selectTariff(tariff.name)">
+        <img src="https://img.icons8.com/dusk/64/000000/euro-pound-exchange.png"/>
+        <ion-card-header>
+          <ion-card-title color="primary">{{tariff.name}}</ion-card-title>
+          <ion-card-subtitle color="primary">{{tariff.price}} € each {{tariff.durationInMinutes}} minutes</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="step === 2">
+    <div class="scroll" scrollY="true" style="height: 100%;">
+      <ion-card *ngFor="let machine of machineGroups[selectedMachineGroupId - 1].machines" style="width: 50%; height: 90%; display: inline-block;">
+        <img [src]="machineGroups[selectedMachineGroupId - 1].iconUrl" />
+        <ion-card-header>
+          <ion-card-title color="primary">machine {{machine.labeledAs}}</ion-card-title>
+          <ion-card-subtitle color="primary">machine</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <div class="ion-padding">
+    <ion-button color="primary" fill="outline" expand="block" (click)="onBackClick()" *ngIf="step > 0">Back</ion-button>
+  </div>
+  
 </ion-content>
