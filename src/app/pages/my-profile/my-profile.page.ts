@@ -12,6 +12,7 @@ import { AlertsService } from 'src/app/services/alerts.service';
 export class MyProfilePage implements OnInit {
 
   user: Partial<UserDetailed> = {};
+  remainingCreditRounded: number;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -19,6 +20,7 @@ export class MyProfilePage implements OnInit {
 
   ngOnInit() {
     this.userService.getUser(this.authService.decodedToken.nameid).subscribe((user: UserDetailed) => {
+      this.remainingCreditRounded = Math.round((user.remainingCredit + 0.00001) * 100) / 100;
       if (user.photoUrl === null) {
         user.photoUrl = '../assets/img/user.png';
       }
