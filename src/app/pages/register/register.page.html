@@ -1,0 +1,58 @@
+<ion-content class="ion-padding">
+
+  <form #loginForm="ngForm" (ngSubmit)="register()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" name="email" required [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" name="name" required [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Surname</ion-label>
+      <ion-input type="text" name="surname" required [(ngModel)]="user.surname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Street</ion-label>
+      <ion-input type="text" name="street" required [(ngModel)]="user.street"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Number</ion-label>
+      <ion-input type="number" name="number" required [(ngModel)]="user.number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">ZIP</ion-label>
+      <ion-input type="number" name="zip" required [(ngModel)]="user.zip"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input type="text" name="city" required [(ngModel)]="user.city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Country</ion-label>
+      <ion-input type="text" name="country" required [(ngModel)]="user.country"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" name="password" required [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Repeat password</ion-label>
+      <ion-input type="password" name="repeatPassword" required [(ngModel)]="repeatPassword"></ion-input>
+    </ion-item>
+
+    <ion-button class="ion-margin-top" shape="round" expand="block" type="submit" [disabled]="loginForm.invalid">Register</ion-button>
+    <ion-button class="ion-margin-top" shape="round" fill="outline" expand="block" [routerLink]="['/login']">Back</ion-button>
+  </form>
+  
+</ion-content>
