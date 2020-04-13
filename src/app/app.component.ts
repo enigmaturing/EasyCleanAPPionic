@@ -23,6 +23,15 @@ export class AppComponent {
       this.statusBar.backgroundColorByName('white');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.platform.ready().then(() => {
+        this.platform.backButton.subscribeWithPriority(9999, () => {
+          // tslint:disable-next-line: only-arrow-functions
+          document.addEventListener('backbutton', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+          }, false);
+        });
+      })
     });
   }
 }
