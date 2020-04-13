@@ -17,14 +17,13 @@
 
   <div class="container" *ngIf="isData && step === 0">
     <div class="scroll" scrollY="true" style="height: 100%;">
-      <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;"
-                (click)="selectMachineGroup(machineGroup.id)">
+      <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;">
         <img [src]="machineGroup.iconUrl" />
         <ion-card-header>
           <ion-card-title color="primary">{{machineGroup.typeName}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+          <ion-button fill="outline" expand="block" slot="end" (click)="selectMachineGroup(machineGroup.id)">Select</ion-button>
         </ion-card-content>
       </ion-card>
     </div>
@@ -32,15 +31,14 @@
 
   <div class="container" *ngIf="step === 1">
     <div class="scroll" scrollY="true" style="height: 100%;">
-      <ion-card *ngFor="let tariff of availableTariffs" style="width: 50%; height: 90%; display: inline-block;"
-                (click)="selectTariff(tariff.name)">
+      <ion-card *ngFor="let tariff of availableTariffs" style="width: 50%; height: 90%; display: inline-block;">
         <img src="https://img.icons8.com/dusk/64/000000/euro-pound-exchange.png"/>
         <ion-card-header>
           <ion-card-title color="primary">{{tariff.name}}</ion-card-title>
           <ion-card-subtitle color="primary">{{tariff.price}} € each {{tariff.durationInMinutes}} minutes</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+          <ion-button fill="outline" expand="block" slot="end" (click)="selectTariff(tariff.id)">Select</ion-button>
         </ion-card-content>
       </ion-card>
     </div>
@@ -55,11 +53,13 @@
           <ion-card-subtitle color="primary">machine</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          <ion-button fill="outline" expand="block" slot="end">Select</ion-button>
+          <ion-button fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)">Select</ion-button>
         </ion-card-content>
       </ion-card>
     </div>
   </div>
+
+  <img *ngIf="step === 3" src="https://img.icons8.com/cute-clipart/64/000000/ok.png"/>
 
   <div class="ion-padding">
     <ion-button color="primary" fill="outline" expand="block" (click)="onBackClick()" *ngIf="step > 0">Back</ion-button>

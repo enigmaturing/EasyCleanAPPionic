@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MachineService } from 'src/app/services/machine.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { MachineGroup } from '../../models/machine-group';
 import { Tariff } from '../../models/tariff';
 import { TariffService } from 'src/app/services/tariff.service';
+import { MachineUsage } from '../../models/machine-usage';
+import { AuthService } from 'src/app/services/auth.service';
+import { SalesService } from 'src/app/services/sales.service';
 
 @Component({
   selector: 'app-machines-list',
@@ -15,13 +17,17 @@ export class MachinesListPage implements OnInit {
 
   machineGroups: Partial<MachineGroup>[] = [{}];
   availableTariffs: Partial<Tariff>[] = [{}];
-  selectedMachineGroupId;
+  selectedMachineGroupId: number;
+  selectedTariffId: number;
   isData = false;
   step = 0;
+  machineUsage = {} as MachineUsage;
 
   constructor(private machineService: MachineService,
               private tariffService: TariffService,
-              private alertsService: AlertsService) { }
+              private alertsService: AlertsService,
+              private authService: AuthService,
+              private salesService: SalesService) { }
 
   selectMachineGroup(selectedGroupId: number) {
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
@@ -33,17 +39,21 @@ export class MachinesListPage implements OnInit {
     });
   }
 
-  selectMachine(selectedGroupId: number) {
-    this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
-      this.availableTariffs = tariffs;
-      this.step = 1;
-    }, error => {
-      this.alertsService.presentToast('Error retrieving available traiffs');
-    });
+  selectTariff(tariffId: number) {
+    this.selectedTariffId = tariffId;
+    this.step = 2;
   }
 
-  selectTariff(tariffName: string) {
-    this.step = 2;
+  selectMachine(selectedMachineId: number) {
+    this.machineUsage.machineId = selectedMachineId;
+    this.machineUsage.quantityOfServicesBooked = 1; // ToDo: Select desired number of services booked
+    this.machineUsage.tariffId = this.selectedTariffId;
+    this.machineUsage.userId = this.authService.decodedToken.nameid;
+    this.salesService.makeMachineUsage(this.machineUsage).subscribe(next => {
+      this.step = 3;
+    }, error => {
+      this.alertsService.presentToast("You don't have enough credit.");
+    });
   }
 
   onBackClick() {
