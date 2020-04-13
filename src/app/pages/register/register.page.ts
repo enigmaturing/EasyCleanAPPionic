@@ -27,6 +27,7 @@ export class RegisterPage implements OnInit {
       this.repeatPassword = '';
       return;
     }
+    this.user.photoUrl = 'http://www.javiergonzalez.de/easyclean/user.png';
     this.authService.register(this.user).subscribe(next => {
       this.login();
     }, error => {

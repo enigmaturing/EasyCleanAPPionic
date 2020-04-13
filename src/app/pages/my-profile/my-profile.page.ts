@@ -21,9 +21,6 @@ export class MyProfilePage implements OnInit {
   ngOnInit() {
     this.userService.getUser(this.authService.decodedToken.nameid).subscribe((user: UserDetailed) => {
       this.remainingCreditRounded = Math.round((user.remainingCredit + 0.00001) * 100) / 100;
-      if (user.photoUrl === null) {
-        user.photoUrl = '../assets/img/user.png';
-      }
       this.user = user;
     }, error => {
       this.alertsService.presentToast('Error retrieving the user profile');
