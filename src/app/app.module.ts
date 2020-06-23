@@ -26,8 +26,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: [environment.ip],
-        blacklistedRoutes: [environment.ip + '/api/auth']
+        whitelistedDomains: ['easyclean.azurewebsites.net'],
+        blacklistedRoutes: ['easyclean.azurewebsites.net/api/auth']
       }
     })],
   providers: [
