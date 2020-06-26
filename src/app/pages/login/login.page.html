@@ -7,15 +7,22 @@
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" name="email" required [(ngModel)]="model.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></ion-input>
     </ion-item>
-
+    
     <ion-item>
       <ion-label position="floating">Password</ion-label>
       <ion-input type="password" name="password" required [(ngModel)]="model.password"></ion-input>
     </ion-item>
-
+    
     <ion-button class="ion-margin-top" shape="round" expand="block" type="submit" [disabled]="loginForm.invalid">Login</ion-button>
     <ion-button class="ion-margin-top" shape="round" fill="outline" expand="block" [routerLink]="['/register']">Register</ion-button>
   </form>
+
+  <div class="parent">
+    <ng-lottie height="100%" class="lottie" [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>
+    <ng-lottie height="100%" class="lottie" [options]="optionsNok" (complete)="completedNok($event)" (animationCreated)="animationNokCreated($event)"></ng-lottie>
+    <ng-lottie height="100%" class="lottie" [options]="optionsLoading" (animationCreated)="animationLoadingCreated($event)"></ng-lottie>
+
+  </div>
 
   <div class="footer">
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 85" preserveAspectRatio="none" shape-rendering="auto">
@@ -30,5 +37,4 @@
   </svg>
   </div>
 
-  
 </ion-content>

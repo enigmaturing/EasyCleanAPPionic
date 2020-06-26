@@ -28,6 +28,8 @@
     "cordova-ios": "^5.1.0",
     "cordova-plugin-wkwebview-engine": "^1.2.1",
     "core-js": "^3.6.4",
+    "lottie-web": "^5.6.10",
+    "ngx-lottie": "^6.1.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
