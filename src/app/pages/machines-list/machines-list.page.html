@@ -15,7 +15,21 @@
     <ion-text *ngIf="step===2" color="primary"><h1>Select an available machine:</h1></ion-text>
   </div>
 
-  <div class="container" *ngIf="isData && step === 0">
+  <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
+    <ion-slide *ngFor="let machineGroup of machineGroups">
+      <ion-card>
+        <img src="http://www.javiergonzalez.de/easyclean/dryer.svg" />
+        <ion-card-header>
+          <ion-card-title color="primary">{{machineGroup.typeName}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button fill="outline" expand="block" slot="end" (click)="selectMachineGroup(machineGroup.id)">Select</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- <div class="container" *ngIf="isData && step === 0">
     <div class="scroll" scrollY="true" style="height: 100%;">
       <ion-card *ngFor="let machineGroup of machineGroups" style="width: 50%; height: 90%; display: inline-block;">
         <img [src]="machineGroup.iconUrl" />
@@ -27,7 +41,7 @@
         </ion-card-content>
       </ion-card>
     </div>
-  </div>
+  </div> -->
 
   <div class="container" *ngIf="step === 1">
     <div class="scroll" scrollY="true" style="height: 100%;">

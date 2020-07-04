@@ -11,3 +11,14 @@
       overflow: auto;
     }
   }
+
+  /* Without setting height the slides will take up the height of the slide's content */
+ion-slides {
+  height: 75%;
+}
+
+ion-card {
+  width: 75%;
+  height: 75%;
+  display: inline-block;
+}

@@ -29,6 +29,14 @@ export class MachinesListPage implements OnInit {
               private authService: AuthService,
               private salesService: SalesService) { }
 
+  // Optional parameters to pass to the swiper instance.
+  // See http://idangero.us/swiper/api/ for valid options.
+  slideOpts = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    speed: 400
+  };
+
   selectMachineGroup(selectedGroupId: number) {
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
       this.availableTariffs = tariffs;
