@@ -18,7 +18,7 @@
   <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
     <ion-slide *ngFor="let machineGroup of machineGroups">
       <ion-card>
-        <img src="http://www.javiergonzalez.de/easyclean/dryer.svg" />
+        <img src={{machineGroup.iconUrl}} />
         <ion-card-header>
           <ion-card-title color="primary">{{machineGroup.typeName}}</ion-card-title>
         </ion-card-header>
