@@ -1,42 +1,35 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="primary"></ion-menu-button>
     </ion-buttons>
-    <ion-title>My Profile</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <ion-avatar>
-          <img src="{{user.photoUrl}}">
-        </ion-avatar>
-      </ion-col>
-      <ion-col size="6">
-        <ion-row>
-          <ion-text color="primary" style="font-size: 30px;">
-            {{ user.name }} {{ user.surname }}
-          </ion-text>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-text color="primary" style="font-size: 20px;">{{ user.street }} {{user.number}} {{user.zip}} {{user.city}}</ion-text>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-text color="primary" style="font-size: 20px;">{{ user.email }}</ion-text>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-text color="primary" style="font-size: 20px;">Available credit: {{ remainingCreditRounded }} €</ion-text>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content fullscreen="true" slot="fixed" >
+
+  <div class="card">
+
+    <div class="header">
+      <div class="avatar">
+        <img src="{{user.photoUrl}}" alt="">
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h3 class="client-name">{{ user.name }} {{ user.surname }}</h3>
+        <h5 class="client-details">{{ user.email }}</h5>
+        <h6 class="client-details">{{ user.street }}, {{user.number}}</h6>
+        <h6 class="client-details">{{user.zip}} {{user.city}}</h6>
+        <h6 class="credit">Saldo actual: {{remainingCreditRounded}}€</h6>
+      </div>
+
+      <ion-button expand="block" color="primary">Recargar mi cuenta</ion-button>
+
+    </div>
+    
+  </div>
+
 </ion-content>

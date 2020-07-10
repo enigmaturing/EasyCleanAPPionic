@@ -1,6 +1,46 @@
-ion-avatar  {
-    width: 125px !important;
-    height : 125px !important;
-    max-width: 500px !important;  //any size
-    max-height: 500px !important; //any size
-}
+.card {
+    margin: 0 auto;
+  
+    .header {
+        height: 200px;
+  
+        .avatar {
+            width: 160px;
+            height: 160px;
+            position: relative;
+            margin: 0 auto;
+  
+            img {
+                display: block;
+                border-radius: 50%;
+                position: absolute;
+                bottom: calc(-1*(80px + 4px));
+                border: 8px solid var(--ion-color-primary);
+                background-color: #fff;
+            }
+        }
+    }
+  }
+  
+  .card-body {
+    background-color: transparent;
+    padding: 30px;
+    height: calc(100vh - (200px + 56px));
+    overflow: hidden;
+  
+    .user-meta {
+        padding-top: 40px;
+  
+        .client-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #303940;
+        }
+  
+        .client-details {
+            font-size: 90%;
+            color: #949ea6;
+            margin: 0 auto;
+        }
+    }
+  }
