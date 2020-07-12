@@ -10,7 +10,7 @@
 <ion-content fullscreen="true" slot="fixed" >
 
   <div class="body-container">
-    
+
     <div class="ion-padding">
       <ion-text *ngIf="step===0" color="primary"><h1>PASO 1:</h1><h3>Selecciona un tipo de máquina:</h3></ion-text>
       <ion-text *ngIf="step===1" color="primary"><h1>PASO 2:</h1><h3>Selecciona una tarifa:</h3></ion-text>
@@ -68,6 +68,19 @@
     <div class="ion-padding">
       <ion-button color="primary" fill="outline" expand="block" (click)="onBackClick()" *ngIf="step > 0">Atrás</ion-button>
     </div>
+  </div>
+
+  <div class="footer">
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 85" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+      </defs>
+      <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(49,124,247,0.6)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(49,124,247,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(49,124,247,0.4)" />
+      </g>
+    </svg>
   </div>
   
 </ion-content>
