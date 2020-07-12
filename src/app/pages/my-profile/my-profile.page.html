@@ -9,7 +9,10 @@
 
 <ion-content fullscreen="true" slot="fixed" >
 
+  
   <div class="card">
+    
+    <ion-text color="primary" class="ion-text-center"><h1>¡HOLA!</h1></ion-text>
 
     <div class="header">
       <div class="avatar">
@@ -20,13 +23,15 @@
     <div class="card-body">
       <div class="user-meta ion-text-center">
         <h3 class="client-name">{{ user.name }} {{ user.surname }}</h3>
-        <h5 class="client-details">{{ user.email }}</h5>
-        <h6 class="client-details">{{ user.street }}, {{user.number}}</h6>
-        <h6 class="client-details">{{user.zip}} {{user.city}}</h6>
-        <h6 class="credit">Saldo actual: {{remainingCreditRounded}}€</h6>
+        <h2 class="client-details">{{ user.email }}</h2>
+        <br>
+        <h4 class="client-details">{{ user.street }}, {{user.number}}</h4>
+        <h4 class="client-details">{{user.zip}} {{user.city}}</h4>
+        <h4 class="credit">Saldo actual: {{remainingCreditRounded}}€</h4>
       </div>
-
-      <ion-button expand="block" color="primary">Recargar mi cuenta</ion-button>
+      
+      <img class="paymentmethods" src="../../../assets/img/paymentmethods.png" alt="">
+      <ion-button expand="block" color="primary" (click)="onClickPayment()">Recargar mi cuenta</ion-button>
 
     </div>
     

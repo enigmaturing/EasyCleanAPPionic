@@ -27,4 +27,8 @@ export class MyProfilePage implements OnInit {
     });
   }
 
+  onClickPayment() {
+    this.alertsService.presentToast('Actualmente sólo está habilitado el pago en mostrador');
+  }
+
 }

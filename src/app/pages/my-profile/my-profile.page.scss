@@ -2,7 +2,7 @@
     margin: 0 auto;
   
     .header {
-        height: 200px;
+        height: 180px;
   
         .avatar {
             width: 160px;
@@ -14,7 +14,8 @@
                 display: block;
                 border-radius: 50%;
                 position: absolute;
-                bottom: calc(-1*(80px + 4px));
+                bottom: 0;
+                top: 20px;
                 border: 8px solid var(--ion-color-primary);
                 background-color: #fff;
             }
@@ -24,12 +25,12 @@
   
   .card-body {
     background-color: transparent;
-    padding: 30px;
+    padding: 20px;
     height: calc(100vh - (200px + 56px));
     overflow: hidden;
   
     .user-meta {
-        padding-top: 40px;
+        padding-top: 0px;
   
         .client-name {
             font-size: 24px;
@@ -95,4 +96,7 @@
   100% {
       transform: translate3d(85px, 0, 0);
   }
+}
+.paymentmethods {
+  padding: 20px;
 }
