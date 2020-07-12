@@ -33,7 +33,9 @@ export class MachinesListPage implements OnInit {
   // See http://idangero.us/swiper/api/ for valid options.
   slideOpts = {
     initialSlide: 0,
-    slidesPerView: 1,
+    slidesPerView: 1.5,
+    centeredSlides: true,
+    spaceBetween: 5,
     speed: 400
   };
 
