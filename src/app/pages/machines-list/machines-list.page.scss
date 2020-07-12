@@ -17,8 +17,20 @@ ion-slides {
   height: 75%;
 }
 
+.body-container {
+  height: 75%;
+}
+
 ion-card {
   width: 75%;
-  height: 75%;
+  height: 60%;
   display: inline-block;
+}
+
+ion-card-header {
+  height: 80%;
+}
+
+ion-card-content {
+  height: 20%;
 }
