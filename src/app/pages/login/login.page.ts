@@ -24,16 +24,9 @@ export class LoginPage implements OnInit {
     loop: false
   };
 
-  optionsLoading: AnimationOptions = {
-    path: '/assets/animation_loading.json',
-    autoplay: false,
-    loop: true
-  };
-
   animationItemOk: AnimationItem;
   animationItemNok: AnimationItem;
-  animationItemLoading: AnimationItem;
-
+  showLoadingSpinner = false;
 
   animationOkCreated(animationItem: AnimationItem): void {
     this.animationItemOk = animationItem;
@@ -43,11 +36,6 @@ export class LoginPage implements OnInit {
   animationNokCreated(animationItem: AnimationItem): void {
     this.animationItemNok = animationItem;
     this.animationItemNok.hide();
-  }
-
-  animationLoadingCreated(animationItem: AnimationItem): void {
-    this.animationItemLoading = animationItem;
-    this.animationItemLoading.hide();
   }
 
   completedOk(animationItem: AnimationItem): void {
@@ -72,16 +60,15 @@ export class LoginPage implements OnInit {
     //   ...this.options, // In case you have other properties that you want to copy
     //   path: '/assets/animation2.json',
     // };
-    this.animationItemLoading.play();
-    this.animationItemLoading.show();
+    this.showLoadingSpinner = true;
     this.authService.login(this.model).subscribe(next => {
-      this.animationItemLoading.hide();
+      this.showLoadingSpinner = false;
       this.animationItemOk.show();
       this.animationItemNok.hide();
       this.animationItemOk.play();
     }, error => {
       //this.alerts.presentAlert('Attention', 'Wrong password or email', '', 'OK');
-      this.animationItemLoading.hide();
+      this.showLoadingSpinner = false;
       this.animationItemOk.hide();
       this.animationItemNok.show();
       this.animationItemNok.play();

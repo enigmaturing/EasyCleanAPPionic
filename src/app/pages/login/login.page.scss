@@ -66,3 +66,9 @@
   left: 50%;                   /* Move 50% from left */
   transform: translateX(-50%); /* Move button Center position  */
 }
+/*ion-spinner's default display is inline-block.
+  We have to set it to block and set margin auto to center it horizontally*/
+ion-spinner {
+  display: block;
+  margin: auto;
+}

@@ -20,8 +20,7 @@
   <div class="parent">
     <ng-lottie height="100%" class="lottie" [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>
     <ng-lottie height="100%" class="lottie" [options]="optionsNok" (complete)="completedNok($event)" (animationCreated)="animationNokCreated($event)"></ng-lottie>
-    <ng-lottie height="100%" class="lottie" [options]="optionsLoading" (animationCreated)="animationLoadingCreated($event)"></ng-lottie>
-
+    <ion-spinner color="primary" *ngIf="showLoadingSpinner"></ion-spinner>
   </div>
 
   <div class="footer">
