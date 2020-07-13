@@ -20,8 +20,11 @@
         </ion-label>
       </ion-item>
     </div>
-    <div *ngIf="user.machineUsages.length === 0">
-      <ion-text>You have not make usage of our machines yet :(</ion-text>
+    <div *ngIf="user.machineUsages.length === 0" class="ion-padding">
+      <ion-text color="primary">
+        <h1>Aún no has hecho uso de nuestro sistema.</h1>
+        <h3>Para que puedas controlar tu consumo, en esta lista verás tu historial de pagos. :)</h3>
+      </ion-text>
     </div>
   </ion-list>
 
