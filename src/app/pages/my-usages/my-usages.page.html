@@ -25,6 +25,28 @@
     </div>
   </ion-list>
 
+  <!-- Skeleton screen -->
+  <div *ngIf="!isData">
+    <ion-list>
+      <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
   <ion-fab vertical="top" horizontal="end" edge slot="fixed">
       <ion-fab-button>
         <ion-icon name="add-outline"></ion-icon>
@@ -36,3 +58,4 @@
     </ion-fab>
   
 </ion-content>
+
