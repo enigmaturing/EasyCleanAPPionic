@@ -12,37 +12,37 @@ export class MenuPage implements OnInit {
 
   pages = [
     {
-      title: 'Dashboard',
+      title: 'Panel',
       icon: 'apps-outline',
       url: '/menu/dashboard',
       roles: ['Admin']
     },
     {
-      title: 'Sales',
+      title: 'Ventas',
       icon: 'cash-outline',
       url: '/menu/sales',
       roles: ['Admin', 'Employee']
     },
     {
-      title: 'Clients',
+      title: 'Clientes',
       icon: 'people-circle-outline',
       url: '/menu/clients',
       roles: ['Admin', 'Employee']
     },
     {
-      title: 'Machines',
+      title: 'Máquinas',
       icon: 'water-outline',
       url: '/menu/machines',
       roles: ['Admin', 'Employee', 'Client']
     },
     {
-      title: 'My profile',
+      title: 'Mi perfil',
       icon: 'person-circle-outline',
       url: '/menu/my-profile',
       roles: ['Admin', 'Employee', 'Client']
     },
     {
-      title: 'My usages',
+      title: 'Mi actividad',
       icon: 'timer-outline',
       url: '/menu/my-usages',
       roles: ['Client']
