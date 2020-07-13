@@ -15,13 +15,17 @@
     <ion-text color="primary" class="ion-text-center"><h1>¡HOLA!</h1></ion-text>
 
     <div class="header">
-      <div class="avatar">
+      <div class="avatar" *ngIf="isData">
         <img src="{{user.photoUrl}}" alt="">
       </div>
+      <ion-avatar class="avatar" *ngIf="!isData">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
     </div>
 
     <div class="card-body">
-      <div class="user-meta ion-text-center">
+
+      <div class="user-meta ion-text-center" *ngIf="isData">
         <h3 class="client-name">{{ user.name }} {{ user.surname }}</h3>
         <h2 class="client-details">{{ user.email }}</h2>
         <br>
@@ -29,7 +33,16 @@
         <h4 class="client-details">{{user.zip}} {{user.city}}</h4>
         <h4 class="credit">Saldo actual: {{remainingCreditRounded}}€</h4>
       </div>
-      
+
+      <div class="user-meta ion-text-center" *ngIf="!isData">
+        <h3 class="client-name"><ion-skeleton-text class="center" animated style="width: 70%"></ion-skeleton-text></h3>
+        <h2 class="client-details"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h2>
+        <br>
+        <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
+        <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
+        <h4 class="credit"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h4>
+      </div>
+
       <img class="paymentmethods" src="../../../assets/img/paymentmethods.png" alt="">
       <ion-button expand="block" color="primary" (click)="onClickPayment()">Recargar mi cuenta</ion-button>
 

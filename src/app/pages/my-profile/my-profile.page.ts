@@ -13,6 +13,7 @@ export class MyProfilePage implements OnInit {
 
   user: Partial<UserDetailed> = {};
   remainingCreditRounded: number;
+  isData = false;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -22,6 +23,7 @@ export class MyProfilePage implements OnInit {
     this.userService.getUser(this.authService.decodedToken.nameid).subscribe((user: UserDetailed) => {
       this.remainingCreditRounded = Math.round((user.remainingCredit + 0.00001) * 100) / 100;
       this.user = user;
+      this.isData = true;
     }, error => {
       this.alertsService.presentToast('Error retrieving the user profile');
     });
