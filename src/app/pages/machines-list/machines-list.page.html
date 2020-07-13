@@ -16,6 +16,23 @@
       <ion-text *ngIf="step===1" color="primary"><h1>PASO 2:</h1><h3>Selecciona una tarifa:</h3></ion-text>
       <ion-text *ngIf="step===2" color="primary"><h1>PASO 3:</h1><h3>Selecciona una máquina libre:</h3></ion-text>
     </div>
+
+    <!-- Skeleton -->
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="!isData">
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            <ion-thumbnail class="fill-parent">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-skeleton-text animated class="fill-parent"></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+    <!-- Skeleton end -->
   
     <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
       <ion-slide *ngFor="let machineGroup of machineGroups">
