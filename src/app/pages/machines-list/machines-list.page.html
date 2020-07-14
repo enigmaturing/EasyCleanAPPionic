@@ -36,9 +36,9 @@
   
     <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
       <ion-slide *ngFor="let machineGroup of machineGroups">
-        <ion-card>
+        <ion-card style="overflow: visible;">
           <ion-card-header>
-            <img src={{machineGroup.iconUrl}} />
+            <img src={{machineGroup.iconUrl}} style="position: relative; margin-top: -100px;"/>
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectMachineGroup(machineGroup.id)">
