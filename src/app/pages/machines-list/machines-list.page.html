@@ -70,13 +70,14 @@
   
     <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 2">
       <ion-slide *ngFor="let machine of machineGroups[selectedMachineGroupId - 1].machines">
-        <ion-card>
+        <ion-card style="overflow: visible;">  
           <ion-card-header>
-            <img [src]="machineGroups[selectedMachineGroupId - 1].iconUrl" />
+            <ion-text color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-text color="primary"><h5>Máquina {{machine.labeledAs}}</h5></ion-text>
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)">
-              Máquina {{machine.labeledAs}}
+              Seleccionar
             </ion-button>
           </ion-card-content>
         </ion-card>
