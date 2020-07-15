@@ -8,12 +8,22 @@ import { MachinesListPageRoutingModule } from './machines-list-routing.module';
 
 import { MachinesListPage } from './machines-list.page';
 
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+// Note we need a separate function as it's required
+// by the AOT compiler.
+export function playerFactory() {
+  return player;
+}
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MachinesListPageRoutingModule
+    MachinesListPageRoutingModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   declarations: [MachinesListPage]
 })

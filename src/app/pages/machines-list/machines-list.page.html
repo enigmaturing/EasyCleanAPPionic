@@ -84,10 +84,14 @@
       </ion-slide>
     </ion-slides>
   
-    <img *ngIf="step === 3" src="https://img.icons8.com/cute-clipart/64/000000/ok.png"/>
+    <!-- <img *ngIf="step === 3" src="https://img.icons8.com/cute-clipart/64/000000/ok.png"/> -->
+    <div class="parent" *ngIf="step === 3">
+      <ng-lottie class="lottie" [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>
+    </div>
+  
   
     <div class="ion-padding">
-      <ion-button color="primary" fill="outline" expand="block" (click)="onBackClick()" *ngIf="step > 0">Atrás</ion-button>
+      <ion-button color="primary" fill="outline" expand="block" (click)="onBackClick()" *ngIf="step === 1 || step == 2">Atrás</ion-button>
     </div>
   </div>
 

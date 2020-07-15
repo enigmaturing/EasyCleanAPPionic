@@ -91,3 +91,14 @@ animation-duration: 20s;
     transform: translate3d(85px, 0, 0);
 }
 }
+.parent {
+  position: relative;
+  width: 100%;
+}
+.lottie {
+  display: inline-block;       /* Display inline block */
+  text-align: center;          /* For button text center */
+  position: absolute;          /* Position absolute */
+  left: 50%;                   /* Move 50% from left */
+  transform: translateX(-50%); /* Move button Center position  */
+}

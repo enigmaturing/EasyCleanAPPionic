@@ -7,6 +7,9 @@ import { TariffService } from 'src/app/services/tariff.service';
 import { MachineUsage } from '../../models/machine-usage';
 import { AuthService } from 'src/app/services/auth.service';
 import { SalesService } from 'src/app/services/sales.service';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'lottie-web';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-machines-list',
@@ -22,11 +25,19 @@ export class MachinesListPage implements OnInit {
   isData = false;
   step = 0;
   machineUsage = {} as MachineUsage;
+  animationItemOk: AnimationItem;
+
+  optionsOk: AnimationOptions = {
+    path: '/assets/animation_ok.json',
+    autoplay: false,
+    loop: false
+  };
 
   constructor(private machineService: MachineService,
               private tariffService: TariffService,
               private alertsService: AlertsService,
               private authService: AuthService,
+              private router: Router,
               private salesService: SalesService) { }
 
   // Optional parameters to pass to the swiper instance.
@@ -61,6 +72,7 @@ export class MachinesListPage implements OnInit {
     this.machineUsage.userId = this.authService.decodedToken.nameid;
     this.salesService.makeMachineUsage(this.machineUsage).subscribe(next => {
       this.step = 3;
+      this.animationItemOk.show();
     }, error => {
       this.alertsService.presentToast("You don't have enough credit.");
     });
@@ -68,6 +80,16 @@ export class MachinesListPage implements OnInit {
 
   onBackClick() {
     this.step--;
+  }
+
+  animationOkCreated(animationItem: AnimationItem): void {
+    this.animationItemOk = animationItem;
+    this.animationItemOk.play();
+  }
+
+  completedOk(animationItem: AnimationItem): void {
+    this.animationItemOk.stop();
+    this.router.navigate(['/menu/my-profile']);
   }
 
   ngOnInit() {
