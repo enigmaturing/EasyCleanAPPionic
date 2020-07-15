@@ -77,7 +77,8 @@
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)">
-              Seleccionar
+              <span *ngIf="!showLoadingSpinner">Seleccionar</span>
+              <ion-spinner color="primary" *ngIf="showLoadingSpinner"></ion-spinner>
             </ion-button>
           </ion-card-content>
         </ion-card>

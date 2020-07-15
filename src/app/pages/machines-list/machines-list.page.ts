@@ -26,6 +26,7 @@ export class MachinesListPage implements OnInit {
   step = 0;
   machineUsage = {} as MachineUsage;
   animationItemOk: AnimationItem;
+  showLoadingSpinner = false;
 
   optionsOk: AnimationOptions = {
     path: '/assets/animation_ok.json',
@@ -66,15 +67,17 @@ export class MachinesListPage implements OnInit {
   }
 
   selectMachine(selectedMachineId: number) {
+    this.showLoadingSpinner = true;
     this.machineUsage.machineId = selectedMachineId;
     this.machineUsage.quantityOfServicesBooked = 1; // ToDo: Select desired number of services booked
     this.machineUsage.tariffId = this.selectedTariffId;
     this.machineUsage.userId = this.authService.decodedToken.nameid;
     this.salesService.makeMachineUsage(this.machineUsage).subscribe(next => {
+      this.showLoadingSpinner = false;
       this.step = 3;
       this.animationItemOk.show();
     }, error => {
-      this.alertsService.presentToast("You don't have enough credit.");
+      this.alertsService.presentToast("No tienes suficiente crédito");
     });
   }
 
