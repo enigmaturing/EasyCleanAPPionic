@@ -7,4 +7,5 @@ export interface MachineGroup {
     tariffs: Tariff[];
     iconUrl: string;
     typeName: string;
+    numberOfAvailableMachines: number;
 }
