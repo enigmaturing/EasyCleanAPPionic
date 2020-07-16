@@ -100,6 +100,15 @@ export class MachinesListPage implements OnInit {
     return new Date(machine.dateBusyUntil).valueOf() < new Date().valueOf();
   }
 
+  secondsUntillMachineIsAvailable(machine: Machine) {
+    let now, busyUntil;
+    now = new Date();
+    busyUntil = new Date(machine.dateBusyUntil);
+    const secondsWithDecimals = Math.abs(busyUntil - now) / 1000;
+    const seconds = Math.ceil(secondsWithDecimals);
+    return seconds;
+  }
+
   ngOnInit() {
     this.machineService.getMachineGroups().subscribe((machineGroups: MachineGroup[]) => {
       this.machineGroups = machineGroups;

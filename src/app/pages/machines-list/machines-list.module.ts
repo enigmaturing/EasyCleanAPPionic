@@ -11,6 +11,8 @@ import { MachinesListPage } from './machines-list.page';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 
+import { CountdownModule, CountdownGlobalConfig } from 'ngx-countdown';
+
 // Note we need a separate function as it's required
 // by the AOT compiler.
 export function playerFactory() {
@@ -24,7 +26,9 @@ export function playerFactory() {
     IonicModule,
     MachinesListPageRoutingModule,
     LottieModule.forRoot({ player: playerFactory }),
+    CountdownModule
   ],
-  declarations: [MachinesListPage]
+  declarations: [MachinesListPage],
+  providers: [CountdownGlobalConfig]
 })
 export class MachinesListPageModule {}
