@@ -62,14 +62,14 @@ export class MachinesListPage implements OnInit {
     });
   }
 
-  selectTariff(tariffId: number) {
-    this.selectedTariffId = tariffId;
+  selectMachine(selectedMachineId: number) {
+    this.machineUsage.machineId = selectedMachineId;
     this.step = 2;
   }
 
-  selectMachine(selectedMachineId: number) {
+  selectTariff(tariffId: number) {
     this.showLoadingSpinner = true;
-    this.machineUsage.machineId = selectedMachineId;
+    this.selectedTariffId = tariffId;
     this.machineUsage.quantityOfServicesBooked = 1; // ToDo: Select desired number of services booked
     this.machineUsage.tariffId = this.selectedTariffId;
     this.machineUsage.userId = this.authService.decodedToken.nameid;
@@ -78,7 +78,7 @@ export class MachinesListPage implements OnInit {
       this.step = 3;
       this.animationItemOk.show();
     }, error => {
-      this.alertsService.presentToast("No tienes suficiente crédito");
+      this.alertsService.presentToast('No tienes suficiente crédito');
     });
   }
 
