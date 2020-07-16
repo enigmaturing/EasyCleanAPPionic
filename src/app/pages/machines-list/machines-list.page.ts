@@ -10,6 +10,7 @@ import { SalesService } from 'src/app/services/sales.service';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { Router } from '@angular/router';
+import { Machine } from '../../models/machine';
 
 @Component({
   selector: 'app-machines-list',
@@ -93,6 +94,10 @@ export class MachinesListPage implements OnInit {
   completedOk(animationItem: AnimationItem): void {
     this.animationItemOk.stop();
     this.router.navigate(['/menu/my-profile']);
+  }
+
+  isAvailable(machine: Machine) {
+    return new Date(machine.dateBusyUntil).valueOf() < new Date().valueOf();
   }
 
   ngOnInit() {

@@ -75,7 +75,8 @@
         <ion-card style="overflow: visible;">  
           <ion-card-header>
             <ion-text color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
-            <ion-text color="primary"><h5>Máquina {{machine.labeledAs}}</h5></ion-text>
+            <ion-badge color="success" *ngIf="isAvailable(machine)">Disponible</ion-badge>
+            <ion-badge color="danger" *ngIf="!isAvailable(machine)">Ocupada hasta {{machine.dateBusyUntil}}</ion-badge>
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)">

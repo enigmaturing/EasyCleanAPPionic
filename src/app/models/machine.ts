@@ -4,4 +4,6 @@ export interface Machine {
     isBlocked: boolean;
     groupName: string;
     iconUrl: string;
+    dateOfLastUsage: Date;
+    dateBusyUntil: Date;
 }
