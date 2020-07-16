@@ -57,7 +57,8 @@
       <ion-slide *ngFor="let machine of machineGroups[selectedMachineGroupId - 1].machines">
         <ion-card style="overflow: visible;">  
           <ion-card-header>
-            <ion-text color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-text *ngIf="isAvailable(machine)" color="success" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-text *ngIf="!isAvailable(machine)" color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
             <ion-badge color="success" *ngIf="isAvailable(machine)">Disponible</ion-badge>
             <ion-badge color="danger" *ngIf="!isAvailable(machine)">¡Máquina ocupada!<br>Quedará libre en:<br><countdown [config]="{leftTime: secondsUntillMachineIsAvailable(machine)}"></countdown></ion-badge>
           </ion-card-header>
