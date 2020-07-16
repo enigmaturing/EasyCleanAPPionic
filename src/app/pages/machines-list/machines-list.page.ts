@@ -78,6 +78,7 @@ export class MachinesListPage implements OnInit {
       this.step = 3;
       this.animationItemOk.show();
     }, error => {
+      this.showLoadingSpinner = false;
       this.alertsService.presentToast('No tienes suficiente crédito');
     });
   }
