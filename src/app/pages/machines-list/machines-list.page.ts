@@ -94,6 +94,7 @@ export class MachinesListPage implements OnInit {
   completedOk(animationItem: AnimationItem): void {
     this.animationItemOk.stop();
     this.step = 0;
+    this.getMachineGroups();
     this.router.navigate(['/menu/my-profile']);
   }
 
@@ -110,13 +111,17 @@ export class MachinesListPage implements OnInit {
     return seconds;
   }
 
-  ngOnInit() {
+  getMachineGroups() {
     this.machineService.getMachineGroups().subscribe((machineGroups: MachineGroup[]) => {
       this.machineGroups = machineGroups;
       this.isData = true;
     }, error => {
       this.alertsService.presentToast('Error retrieving avilable groups');
     });
+  }
+
+  ngOnInit() {
+    this.getMachineGroups();
   }
 
 }
