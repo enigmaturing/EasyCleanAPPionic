@@ -90,7 +90,10 @@
     </ion-slides>
   
     <div class="center" *ngIf="step === 3">
-      <ng-lottie [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>
+      <div>
+        <ion-text style="text-align: center;" color="success"><h2>¡Pago satisfactorio!</h2></ion-text>
+        <ng-lottie style="width: 70%;" [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>
+      </div>
     </div>
   
     <div class="ion-padding">
