@@ -71,10 +71,10 @@ export class MachinesListPage implements OnInit {
     this.step = 2;
   }
 
-  selectTariff(tariffId: number) {
+  selectTariff(tariffId: number, cardNumber: number) {
     this.showLoadingSpinner = true;
     this.selectedTariffId = tariffId;
-    this.machineUsage.quantityOfServicesBooked = 1; // ToDo: Select desired number of services booked
+    this.machineUsage.quantityOfServicesBooked = this.selectedQuantity[cardNumber];
     this.machineUsage.tariffId = this.selectedTariffId;
     this.machineUsage.userId = this.authService.decodedToken.nameid;
     this.salesService.makeMachineUsage(this.machineUsage).subscribe(next => {
@@ -124,15 +124,15 @@ export class MachinesListPage implements OnInit {
     });
   }
 
-  onClickIncreaseQuantity(i: number){
-    if(this.selectedQuantity[i] < 10) {
-      this.selectedQuantity[i]++;
+  onClickIncreaseQuantity(cardNumber: number){
+    if (this.selectedQuantity[cardNumber] < 10) {
+      this.selectedQuantity[cardNumber]++;
     }
   }
 
-  onClickDecreaseQuantity(i: number){
-    if(this.selectedQuantity[i] > 1) {
-      this.selectedQuantity[i]--;
+  onClickDecreaseQuantity(cardNumber: number){
+    if (this.selectedQuantity[cardNumber] > 1) {
+      this.selectedQuantity[cardNumber]--;
     }
   }
 
