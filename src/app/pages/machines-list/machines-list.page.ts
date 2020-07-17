@@ -76,7 +76,6 @@ export class MachinesListPage implements OnInit {
     this.salesService.makeMachineUsage(this.machineUsage).subscribe(next => {
       this.showLoadingSpinner = false;
       this.step = 3;
-      this.animationItemOk.show();
     }, error => {
       this.showLoadingSpinner = false;
       this.alertsService.presentToast('No tienes suficiente crédito');
@@ -94,6 +93,7 @@ export class MachinesListPage implements OnInit {
 
   completedOk(animationItem: AnimationItem): void {
     this.animationItemOk.stop();
+    this.step = 0;
     this.router.navigate(['/menu/my-profile']);
   }
 
