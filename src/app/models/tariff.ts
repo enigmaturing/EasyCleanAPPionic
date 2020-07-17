@@ -5,4 +5,5 @@ export interface Tariff {
     durationInMinutes: number;
     isActive: boolean;
     machineGroupId: number;
+    isAdjustableDuration: boolean;
 }

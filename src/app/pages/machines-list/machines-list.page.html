@@ -77,14 +77,16 @@
           <ion-card-header>
             <img src="../../../assets/img/coins.svg" style="position: relative; margin-top: -70px; height: 110px;"/>
             <ion-text color="primary"><h6>"{{tariff.name}}"</h6></ion-text>
-            <!-- <ion-text color="primary"><h5>{{tariff.price}} € cada {{tariff.durationInMinutes}} minutos</h5></ion-text> -->
-            <ion-button style="width: 45%;" (click)="onClickDecreaseQuantity(cardNumber)" [disabled]="selectedQuantity[cardNumber] == 1"><ion-icon name="remove"></ion-icon></ion-button>
-            <ion-button  style="width: 45%;" (click)="onClickIncreaseQuantity(cardNumber)" [disabled]="selectedQuantity[cardNumber] == 9"><ion-icon name="add"></ion-icon></ion-button>
-            <ion-text color="primary"><h4>{{selectedQuantity[cardNumber] * tariff.durationInMinutes}} minutos</h4></ion-text>
+            <ion-text *ngIf="!tariff.isAdjustableDuration" color="primary"><h5>{{tariff.price}} € cada {{tariff.durationInMinutes}} minutos</h5></ion-text>
+            <div *ngIf="tariff.isAdjustableDuration">
+              <ion-button style="width: 45%;" (click)="onClickDecreaseQuantity(cardNumber)" [disabled]="selectedQuantity[cardNumber] == 1"><ion-icon name="remove"></ion-icon></ion-button>
+              <ion-button  style="width: 45%;" (click)="onClickIncreaseQuantity(cardNumber)" [disabled]="selectedQuantity[cardNumber] == 9"><ion-icon name="add"></ion-icon></ion-button>
+              <ion-text color="primary"><h4>{{selectedQuantity[cardNumber] * tariff.durationInMinutes}} minutos</h4></ion-text>
+            </div>
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectTariff(tariff.id, cardNumber)">
-              <span *ngIf="!showLoadingSpinner">Total: {{selectedQuantity[cardNumber] * tariff.price}}€</span>
+              <span *ngIf="!showLoadingSpinner">Pagar: {{selectedQuantity[cardNumber] * tariff.price}}€</span>
               <ion-spinner color="primary" *ngIf="showLoadingSpinner"></ion-spinner>
             </ion-button>
           </ion-card-content>
