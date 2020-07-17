@@ -86,7 +86,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-button fill="outline" expand="block" slot="end" (click)="selectTariff(tariff.id, cardNumber)">
-              <span *ngIf="!showLoadingSpinner">Pagar: {{selectedQuantity[cardNumber] * tariff.price}}€</span>
+              <span *ngIf="!showLoadingSpinner">Pagar: {{selectedQuantity[cardNumber] * tariff.price | number:'1.2-2'}}€</span>
               <ion-spinner color="primary" *ngIf="showLoadingSpinner"></ion-spinner>
             </ion-button>
           </ion-card-content>
