@@ -28,6 +28,7 @@ export class MachinesListPage implements OnInit {
   machineUsage = {} as MachineUsage;
   animationItemOk: AnimationItem;
   showLoadingSpinner = false;
+  selectedQuantity: number[] = [];
 
   optionsOk: AnimationOptions = {
     path: '/assets/animation_ok.json',
@@ -56,6 +57,9 @@ export class MachinesListPage implements OnInit {
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
       this.availableTariffs = tariffs;
       this.selectedMachineGroupId = selectedGroupId;
+      this.availableTariffs.forEach(element => {
+        this.selectedQuantity.push(1);
+      });
       this.step = 1;
     }, error => {
       this.alertsService.presentToast('Error retrieving available traiffs');
@@ -118,6 +122,18 @@ export class MachinesListPage implements OnInit {
     }, error => {
       this.alertsService.presentToast('Error retrieving avilable groups');
     });
+  }
+
+  onClickIncreaseQuantity(i: number){
+    if(this.selectedQuantity[i] < 10) {
+      this.selectedQuantity[i]++;
+    }
+  }
+
+  onClickDecreaseQuantity(i: number){
+    if(this.selectedQuantity[i] > 1) {
+      this.selectedQuantity[i]--;
+    }
   }
 
   ngOnInit() {
