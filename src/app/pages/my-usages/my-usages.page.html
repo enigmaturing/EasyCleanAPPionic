@@ -17,14 +17,12 @@
         <ion-label>
 
           <h3>
-            {{machinUsage.date | date:'dd.MM.yyyy'}} a las {{machinUsage.date | date:'hh:mm'}}: 
-            <span>{{machinUsage.quantityOfServicesBooked}} </span>
-            <span *ngIf="machinUsage.quantityOfServicesBooked === 1">vez</span>
-            <span *ngIf="machinUsage.quantityOfServicesBooked > 1">veces</span>
+            <ion-text>{{machinUsage.date | date:'dd.MM.yyyy'}} a las {{machinUsage.date | date:'hh:mm'}}</ion-text>
+            <ion-text> (Uso: {{machinUsage.totalDurationInMinutes}} min.)</ion-text>
           </h3>
-          
+
           <h3>
-            <span>Total: {{ machinUsage.totalAmountPaid }} € ({{machinUsage.tariffName}})</span>
+            <ion-text>Total: {{ machinUsage.totalAmountPaid }} € ({{machinUsage.tariffName}})</ion-text>
           </h3>
 
         </ion-label>
