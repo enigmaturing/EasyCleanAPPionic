@@ -27,6 +27,7 @@ export class MachinesListPage implements OnInit {
   step = 0;
   machineUsage = {} as MachineUsage;
   animationItemOk: AnimationItem;
+  animationItemMachine: AnimationItem;
   showLoadingSpinner = false;
   selectedQuantity: number[] = [];
 
@@ -50,7 +51,7 @@ export class MachinesListPage implements OnInit {
     slidesPerView: 1.5,
     centeredSlides: true,
     spaceBetween: 5,
-    speed: 400
+    speed: 400,
   };
 
   selectMachineGroup(selectedGroupId: number) {
@@ -93,6 +94,11 @@ export class MachinesListPage implements OnInit {
   animationOkCreated(animationItem: AnimationItem): void {
     this.animationItemOk = animationItem;
     this.animationItemOk.play();
+  }
+
+  animationMachineCreated(animationItem: AnimationItem): void {
+    this.animationItemMachine = animationItem;
+    this.animationItemMachine.play();
   }
 
   completedOk(animationItem: AnimationItem): void {

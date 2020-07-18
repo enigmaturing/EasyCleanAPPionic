@@ -38,7 +38,10 @@
       <ion-slide *ngFor="let machineGroup of machineGroups">
         <ion-card style="overflow: visible;">
           <ion-card-header>
-            <img src={{machineGroup.iconUrl}} style="position: relative; margin-top: -100px;"/>
+            <div style="position: relative; margin-top: -100px;" >
+              <ng-lottie style="width: 70%;" [options]="optionsOk" (animationCreated)="animationMachineCreated($event)"></ng-lottie>
+            </div>
+            <!-- <img src={{machineGroup.iconUrl}} style="position: relative; margin-top: -100px;"/> -->
             <ion-badge color="success" *ngIf="machineGroup.numberOfAvailableMachines > 1">{{machineGroup.numberOfAvailableMachines}} máquinas libres</ion-badge>
             <ion-badge color="warning" *ngIf="machineGroup.numberOfAvailableMachines == 1">Sólo {{machineGroup.numberOfAvailableMachines}} máquina libre</ion-badge>
             <ion-badge color="danger" *ngIf="machineGroup.numberOfAvailableMachines == 0">Ninguna máquina libre</ion-badge>
