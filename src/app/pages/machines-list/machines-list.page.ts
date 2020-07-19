@@ -27,12 +27,19 @@ export class MachinesListPage implements OnInit {
   step = 0;
   machineUsage = {} as MachineUsage;
   animationItemOk: AnimationItem;
-  animationItemMachine: AnimationItem;
+  animationItemsMachines: AnimationItem[] = [];
+  animationItemCounter = 0;
   showLoadingSpinner = false;
   selectedQuantity: number[] = [];
 
   optionsOk: AnimationOptions = {
     path: '/assets/animation_ok.json',
+    autoplay: false,
+    loop: false
+  };
+
+  optionsMachine: AnimationOptions = {
+    path: '/assets/animation_nok.json',
     autoplay: false,
     loop: false
   };
@@ -93,6 +100,9 @@ export class MachinesListPage implements OnInit {
 
   slideChanged() {
     console.log('slide changed');
+    this.animationItemsMachines.forEach(element => {
+      element.play();
+    });
   }
 
   animationOkCreated(animationItem: AnimationItem): void {
@@ -101,8 +111,17 @@ export class MachinesListPage implements OnInit {
   }
 
   animationMachineCreated(animationItem: AnimationItem): void {
-    this.animationItemMachine = animationItem;
-    this.animationItemMachine.play();
+    this.animationItemsMachines[this.animationItemCounter] = animationItem;
+    if (this.animationItemCounter === 0) {
+      this.animationItemsMachines[this.animationItemCounter].play();
+    }
+    this.animationItemCounter++;
+  }
+
+  animationMachineCompleted(): void {
+    this.animationItemsMachines.forEach(element => {
+      element.stop();
+    });
   }
 
   completedOk(animationItem: AnimationItem): void {

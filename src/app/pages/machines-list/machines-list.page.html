@@ -33,13 +33,17 @@
       </ion-slide>
     </ion-slides>
     <!-- Skeleton end -->
-  
+
+    <!-- <div style="position: relative; margin-top: -100px;" >
+      <ng-lottie style="width: 70%;" [options]="optionsMachine" (animationCreated)="animationMachineCreated($event)" (complete)="animationMachineCompleted($event)"></ng-lottie>
+    </div> -->
+
     <ion-slides (ionSlideDidChange)="slideChanged()" pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
       <ion-slide *ngFor="let machineGroup of machineGroups">
         <ion-card style="overflow: visible;">
           <ion-card-header>
             <div style="position: relative; margin-top: -100px;" >
-              <ng-lottie style="width: 70%;" [options]="optionsOk" (animationCreated)="animationMachineCreated($event)"></ng-lottie>
+              <ng-lottie style="width: 70%;" [options]="optionsMachine" (animationCreated)="animationMachineCreated($event)" (complete)="animationMachineCompleted($event)"></ng-lottie>
             </div>
             <!-- <img src={{machineGroup.iconUrl}} style="position: relative; margin-top: -100px;"/> -->
             <ion-badge color="success" *ngIf="machineGroup.numberOfAvailableMachines > 1">{{machineGroup.numberOfAvailableMachines}} máquinas libres</ion-badge>
