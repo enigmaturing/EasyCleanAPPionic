@@ -34,7 +34,7 @@
     </ion-slides>
     <!-- Skeleton end -->
   
-    <ion-slides pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
+    <ion-slides (ionSlideDidChange)="slideChanged()" pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
       <ion-slide *ngFor="let machineGroup of machineGroups">
         <ion-card style="overflow: visible;">
           <ion-card-header>

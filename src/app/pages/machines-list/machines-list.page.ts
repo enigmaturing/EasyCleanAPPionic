@@ -91,6 +91,10 @@ export class MachinesListPage implements OnInit {
     this.step--;
   }
 
+  slideChanged() {
+    console.log('slide changed');
+  }
+
   animationOkCreated(animationItem: AnimationItem): void {
     this.animationItemOk = animationItem;
     this.animationItemOk.play();
