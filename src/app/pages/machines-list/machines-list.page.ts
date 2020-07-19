@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { MachineService } from 'src/app/services/machine.service';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { MachineGroup } from '../../models/machine-group';
@@ -11,6 +11,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { Router } from '@angular/router';
 import { Machine } from '../../models/machine';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-machines-list',
@@ -18,6 +19,13 @@ import { Machine } from '../../models/machine';
   styleUrls: ['./machines-list.page.scss'],
 })
 export class MachinesListPage implements OnInit {
+
+  constructor(private machineService: MachineService,
+              private tariffService: TariffService,
+              private alertsService: AlertsService,
+              private authService: AuthService,
+              private router: Router,
+              private salesService: SalesService) { }
 
   machineGroups: Partial<MachineGroup>[] = [{}];
   availableTariffs: Partial<Tariff>[] = [{}];
@@ -44,13 +52,6 @@ export class MachinesListPage implements OnInit {
     loop: false
   };
 
-  constructor(private machineService: MachineService,
-              private tariffService: TariffService,
-              private alertsService: AlertsService,
-              private authService: AuthService,
-              private router: Router,
-              private salesService: SalesService) { }
-
   // Optional parameters to pass to the swiper instance.
   // See http://idangero.us/swiper/api/ for valid options.
   slideOpts = {
@@ -60,6 +61,8 @@ export class MachinesListPage implements OnInit {
     spaceBetween: 5,
     speed: 400,
   };
+
+  @ViewChild('slides', {static: false}) slides: IonSlides;
 
   selectMachineGroup(selectedGroupId: number) {
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
@@ -98,10 +101,10 @@ export class MachinesListPage implements OnInit {
     this.step--;
   }
 
-  slideChanged() {
-    console.log('slide changed');
-    this.animationItemsMachines.forEach(element => {
-      element.play();
+  slideChanged(e: any) {
+    // get current shown slide and animate only that one
+    this.slides.getActiveIndex().then((index: number) => {
+      this.animationItemsMachines[index].play();
     });
   }
 

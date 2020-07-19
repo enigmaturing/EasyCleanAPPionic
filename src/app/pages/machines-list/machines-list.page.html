@@ -38,7 +38,7 @@
       <ng-lottie style="width: 70%;" [options]="optionsMachine" (animationCreated)="animationMachineCreated($event)" (complete)="animationMachineCompleted($event)"></ng-lottie>
     </div> -->
 
-    <ion-slides (ionSlideDidChange)="slideChanged()" pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
+    <ion-slides #slides (ionSlideDidChange)="slideChanged($event)" pager="true" [options]="slideOpts" *ngIf="isData && step === 0">
       <ion-slide *ngFor="let machineGroup of machineGroups">
         <ion-card style="overflow: visible;">
           <ion-card-header>
