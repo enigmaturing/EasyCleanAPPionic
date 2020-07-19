@@ -47,7 +47,7 @@ export class MachinesListPage implements OnInit {
   };
 
   optionsMachine: AnimationOptions = {
-    path: '/assets/animation_nok.json',
+    path: 'https://assets1.lottiefiles.com/datafiles/DyOxNAIZAX9M2BI/data.json',
     autoplay: false,
     loop: false
   };
@@ -102,6 +102,9 @@ export class MachinesListPage implements OnInit {
   }
 
   slideChanged(e: any) {
+    this.animationItemsMachines.forEach(element => {
+      element.stop();
+    });
     // get current shown slide and animate only that one
     this.slides.getActiveIndex().then((index: number) => {
       this.animationItemsMachines[index].play();
