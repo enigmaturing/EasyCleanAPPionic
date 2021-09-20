@@ -29,6 +29,7 @@ export class MachinesListPage implements OnInit {
 
   machineGroups: Partial<MachineGroup>[] = [{}];
   availableTariffs: Partial<Tariff>[] = [{}];
+  machinesInSelectedGroup: Partial<Machine>[] = [{}];
   selectedMachineGroupId: number;
   selectedTariffId: number;
   isData = false;
@@ -65,6 +66,9 @@ export class MachinesListPage implements OnInit {
   @ViewChild('slides', {static: false}) slides: IonSlides;
 
   selectMachineGroup(selectedGroupId: number) {
+    // first, sort machines by label number, ascending
+    this.machinesInSelectedGroup = this.machineGroups[selectedGroupId - 1].machines.sort((a, b) => a.labeledAs - b.labeledAs);
+    // secondly, retrieve tariffs availablae for this machine group
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
       this.availableTariffs = tariffs;
       this.selectedMachineGroupId = selectedGroupId;
