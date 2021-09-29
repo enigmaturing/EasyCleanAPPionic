@@ -14,6 +14,7 @@ export class MyProfilePage implements OnInit {
   user: Partial<UserDetailed> = {};
   remainingCreditRounded: number;
   isData = false;
+  isEditData = false;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -31,6 +32,18 @@ export class MyProfilePage implements OnInit {
 
   onClickPayment() {
     this.alertsService.presentToast('Actualmente sólo está habilitado el pago en mostrador');
+  }
+
+  editData() {
+    this.isEditData = true;
+  }
+
+  updateProfileData() {
+    this.isEditData = false;
+  }
+
+  cancelProfileDataEdition() {
+    this.isEditData = false;
   }
 
 }

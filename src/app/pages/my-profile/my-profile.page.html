@@ -25,26 +25,49 @@
 
     <div class="card-body">
 
-      <div class="user-meta ion-text-center" *ngIf="isData">
-        <h3 class="client-name">{{ user.name }} {{ user.surname }}</h3>
-        <h2 class="client-details">{{ user.email }}</h2>
-        <br>
-        <h4 class="client-details">{{ user.street }}, {{user.number}}</h4>
-        <h4 class="client-details">{{user.zip}} {{user.city}}</h4>
-        <h4 class="credit">Saldo actual: {{remainingCreditRounded}}€</h4>
+      <div *ngIf="!isEditData">
+        <div class="user-meta ion-text-center" *ngIf="isData">
+          <h3 class="client-name">
+            {{ user.name }} {{ user.surname }}
+            <ion-icon name="hammer-outline" (click)="editData()" class="icon-small" color="medium"></ion-icon>
+          </h3>
+          <h2 class="client-details">{{ user.email }}</h2>
+          <br>
+          <h4 class="client-details">{{ user.street }}, {{user.number}}</h4>
+          <h4 class="client-details">{{user.zip}} {{user.city}}</h4>
+          <h4 class="credit">Saldo actual: {{remainingCreditRounded}}€</h4>
+        </div>
+  
+        <div class="user-meta ion-text-center" *ngIf="!isData">
+          <h3 class="client-name"><ion-skeleton-text class="center" animated style="width: 70%"></ion-skeleton-text></h3>
+          <h2 class="client-details"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h2>
+          <br>
+          <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
+          <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
+          <h4 class="credit"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h4>
+        </div>
       </div>
 
-      <div class="user-meta ion-text-center" *ngIf="!isData">
-        <h3 class="client-name"><ion-skeleton-text class="center" animated style="width: 70%"></ion-skeleton-text></h3>
-        <h2 class="client-details"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h2>
-        <br>
-        <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
-        <h4 class="client-details"><ion-skeleton-text class="center" animated style="width: 80%"></ion-skeleton-text></h4>
-        <h4 class="credit"><ion-skeleton-text class="center" animated style="width: 50%"></ion-skeleton-text></h4>
+      <div class="user-meta ion-text-center" *ngIf="isEditData">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input [(ngModel)]="user.name"></ion-input>
+          <ion-label position="stacked">Apellidos</ion-label>
+          <ion-input [(ngModel)]="user.surname"></ion-input>
+          <ion-label item-left position="stacked">Calle</ion-label>
+          <ion-input item-left [(ngModel)]="user.street"></ion-input>
+          <ion-label item-right position="stacked">Numero</ion-label>
+          <ion-input item-right [(ngModel)]="user.number"></ion-input>
+        </ion-item>
+
+        <ion-button class="ion-margin-top" expand="block" color="success" (click)="updateProfileData()">Guardar cambios</ion-button>
+        <ion-button class="ion-margin-top" expand="block" fill="outline" (click)="cancelProfileDataEdition()">Cancelar</ion-button>
       </div>
 
-      <img class="paymentmethods" src="../../../assets/img/paymentmethods.png" alt="">
-      <ion-button expand="block" color="primary" (click)="onClickPayment()">Recargar mi cuenta</ion-button>
+      <div *ngIf="!isEditData">
+        <img class="paymentmethods" src="../../../assets/img/paymentmethods.png" alt="">
+        <ion-button expand="block" color="primary" (click)="onClickPayment()">Recargar mi cuenta</ion-button>
+      </div>
 
     </div>
     
