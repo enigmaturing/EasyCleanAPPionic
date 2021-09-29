@@ -30,6 +30,7 @@ export class MachinesListPage implements OnInit {
   machineGroups: Partial<MachineGroup>[] = [{}];
   availableTariffs: Partial<Tariff>[] = [{}];
   machinesInSelectedGroup: Partial<Machine>[] = [{}];
+  lottieOptions: Partial<AnimationOptions>[] = [{}];
   selectedMachineGroupId: number;
   selectedTariffId: number;
   isData = false;
@@ -42,16 +43,48 @@ export class MachinesListPage implements OnInit {
   selectedQuantity: number[] = [];
 
   optionsOk: AnimationOptions = {
-    path: '/assets/animation_ok.json',
+    path: '/assets/lottie/animation_ok.json',
     autoplay: false,
     loop: false
   };
 
-  optionsMachine: AnimationOptions = {
-    path: 'https://assets1.lottiefiles.com/datafiles/DyOxNAIZAX9M2BI/data.json',
-    autoplay: false,
-    loop: false
+  optionsMachineDryer: AnimationOptions = {
+    path: '/assets/lottie/dryer.json',
+    autoplay: true,
+    loop: 2
   };
+
+  optionsMachineWashingmachine: AnimationOptions = {
+    path: '/assets/lottie/washingmachine.json',
+    autoplay: true,
+    loop: 2
+  };
+
+  optionsVaccumcleaner: AnimationOptions = {
+    path: '/assets/lottie/vaccumcleaner.json',
+    autoplay: true,
+    loop: 2
+  };
+
+  optionsIron: AnimationOptions = {
+    path: '/assets/lottie/iron.json',
+    autoplay: true,
+    loop: 2
+  };
+
+  optionsAutomaticCarWash: AnimationOptions = {
+    path: '/assets/lottie/automaticCarWash.json',
+    autoplay: true,
+    loop: 2
+  };
+
+
+  optionsCarCleaning: AnimationOptions = {
+    path: '/assets/lottie/carCleaning.json',
+    autoplay: true,
+    loop: 3
+  };
+
 
   // Optional parameters to pass to the swiper instance.
   // See http://idangero.us/swiper/api/ for valid options.
@@ -177,6 +210,12 @@ export class MachinesListPage implements OnInit {
 
   ngOnInit() {
     this.getMachineGroups();
+    this.lottieOptions.push(this.optionsMachineWashingmachine);
+    this.lottieOptions.push(this.optionsMachineDryer);
+    this.lottieOptions.push(this.optionsAutomaticCarWash);
+    this.lottieOptions.push(this.optionsCarCleaning);
+    this.lottieOptions.push(this.optionsVaccumcleaner);
+    this.lottieOptions.push(this.optionsIron);
   }
 
 }

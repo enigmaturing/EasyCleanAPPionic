@@ -13,13 +13,13 @@ import { AnimationOptions } from 'ngx-lottie';
 export class LoginPage implements OnInit {
 
   optionsOk: AnimationOptions = {
-    path: '/assets/animation_ok.json',
+    path: '/assets/lottie/animation_ok.json',
     autoplay: false,
     loop: false
   };
 
   optionsNok: AnimationOptions = {
-    path: '/assets/animation_nok.json',
+    path: '/assets/lottie/animation_nok.json',
     autoplay: false,
     loop: false
   };
