@@ -51,6 +51,8 @@ export class LoginPage implements OnInit {
 
   model: any = {};
 
+  // modelDebug: any = {'email': 'javier.glez.martin@gmail.com', 'password': 'password'};
+
   constructor( private router: Router,
                private authService: AuthService,
                private alerts: AlertsService) { }
@@ -80,6 +82,20 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    /*
+    this.showLoadingSpinner = true;
+    this.authService.login(this.modelDebug).subscribe(next => {
+      this.showLoadingSpinner = false;
+      this.animationItemOk.show();
+      this.animationItemNok.hide();
+      this.animationItemOk.play();
+    }, error => {
+      this.showLoadingSpinner = false;
+      this.animationItemOk.hide();
+      this.animationItemNok.show();
+      this.animationItemNok.play();
+    });
+  */
   }
 
 }

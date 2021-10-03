@@ -28,7 +28,7 @@ export class MachinesListPage implements OnInit {
               private salesService: SalesService) { }
 
   machineGroups: Partial<MachineGroup>[] = [{}];
-  availableTariffs: Partial<Tariff>[] = [{}];
+  availableTariffs = [];
   machinesInSelectedGroup: Partial<Machine>[] = [{}];
   lottieOptions: Partial<AnimationOptions>[] = [{}];
   selectedMachineGroupId: number;
@@ -103,7 +103,12 @@ export class MachinesListPage implements OnInit {
     this.machinesInSelectedGroup = this.machineGroups[selectedGroupId - 1].machines.sort((a, b) => a.labeledAs - b.labeledAs);
     // secondly, retrieve tariffs availablae for this machine group
     this.tariffService.getTariffsOfMachineGroup(selectedGroupId).subscribe((tariffs: Tariff[]) => {
-      this.availableTariffs = tariffs;
+      tariffs.forEach(element => {
+        if (element.isActive)
+        {
+          this.availableTariffs.push(element);
+        }
+      });
       this.selectedMachineGroupId = selectedGroupId;
       this.availableTariffs.forEach(element => {
         this.selectedQuantity.push(1);
