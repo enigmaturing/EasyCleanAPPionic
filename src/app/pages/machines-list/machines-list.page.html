@@ -64,13 +64,18 @@
       <ion-slide *ngFor="let machine of machinesInSelectedGroup">
         <ion-card style="overflow: visible;">  
           <ion-card-header>
-            <ion-text *ngIf="isAvailable(machine)" color="success" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
-            <ion-text *ngIf="!isAvailable(machine)" color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
-            <ion-badge color="success" *ngIf="isAvailable(machine)">Disponible</ion-badge>
-            <ion-badge color="danger" *ngIf="!isAvailable(machine)">¡Máquina ocupada!<br>Quedará libre en:<br><countdown [config]="{leftTime: secondsUntillMachineIsAvailable(machine)}"></countdown></ion-badge>
+            <ion-text *ngIf="!machine.isBlocked && isAvailable(machine)" color="success" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-text *ngIf="!machine.isBlocked && !isAvailable(machine)" color="danger" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-text *ngIf="machine.isBlocked" color="medium" style="display: block; position: relative; margin-top: -120px; margin-bottom: 120px; height: 110px; font-size: 180px; font-weight: bolder;">{{machine.labeledAs}}</ion-text>
+            <ion-badge color="success" *ngIf="!machine.isBlocked && isAvailable(machine)">Disponible</ion-badge>
+            <ion-badge color="danger" *ngIf="!machine.isBlocked && !isAvailable(machine)">¡Máquina ocupada!<br>Quedará libre en:<br><countdown [config]="{leftTime: secondsUntillMachineIsAvailable(machine)}"></countdown></ion-badge>
+            <ion-badge color="medium" *ngIf="machine.isBlocked">Fuera de servicio</ion-badge>
           </ion-card-header>
           <ion-card-content>
-            <ion-button fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)" [disabled]="!isAvailable(machine)">
+            <ion-button *ngIf="!machine.isBlocked" fill="outline" expand="block" slot="end" (click)="selectMachine(machine.id)" [disabled]="!isAvailable(machine)">
+              Seleccionar
+            </ion-button>
+            <ion-button *ngIf="machine.isBlocked" fill="outline" expand="block" slot="end" color="medium" disabled="true">
               Seleccionar
             </ion-button>
           </ion-card-content>
