@@ -9,4 +9,30 @@
 
 <ion-content fullscreen="true" slot="fixed" >
 
+  <ion-card>
+
+    <ion-item>
+      <ion-icon name="stats-chart" slot="start" color="success"></ion-icon>
+      <ion-label color="success">Ventas hoy</ion-label>
+      <ion-button fill="outline" slot="end" (click)="toggleDetailSalesToday()" *ngIf="totalSalesToday != 0">Detalles</ion-button>
+    </ion-item>
+  
+    <ion-card-content>
+      <ion-text color="primary" class="ion-text-center">
+        <h1>{{totalSalesToday}}€</h1>
+      </ion-text>
+
+      <ion-list *ngIf="showListSalesToday">
+        <ion-item *ngFor="let usage of machineUsagesToday">
+            <ion-thumbnail slot="start">
+              <img src="{{usage.iconUrl}}">
+            </ion-thumbnail>
+            
+            <ion-text color="primary">A las {{usage.date | date:'HH:mm'}}: {{usage.totalAmountPaid}}€</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
 </ion-content>

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MachineUsage } from '../models/machine-usage';
 import { Observable } from 'rxjs';
 import { MachineUsageDetailed } from '../models/machine-usage-detailed';
+import { DateModel } from '../models/date-model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class SalesService {
 
   getMachineUsages(): Observable<MachineUsageDetailed[]> {
     return this.http.get<MachineUsageDetailed[]>(this.baseUrl + 'machineUsages');
+  }
+
+  getMachineUsagesOnDay(date: DateModel): Observable<MachineUsageDetailed[]> {
+    return this.http.post<MachineUsageDetailed[]>(this.baseUrl + 'machineusagesonday', date);
   }
 }
