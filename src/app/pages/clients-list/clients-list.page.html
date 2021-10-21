@@ -9,27 +9,46 @@
 
 <ion-content fullscreen="true" slot="fixed" >
 
-  <ion-list>
-
-    <ion-item *ngFor="let client of clients">
-        <ion-avatar slot="start">
-          <img src="{{client.photoUrl}}">
-        </ion-avatar>
-        
+  <div *ngIf="!isData">
+    <ion-list>
+      <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
         <ion-label>
-          {{client.name}} {{client.surname}}
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
         </ion-label>
-        
-        <ion-chip color="primary" *ngIf="client.remainingCredit > 0">
-          <ion-label>Crédito: {{ client.remainingCredit | number: '1.2-2'}}€ </ion-label>
-        </ion-chip>
+      </ion-item>
+    </ion-list>
+  </div>
 
-        <ion-chip color="danger"  *ngIf="client.remainingCredit === 0">
-          <ion-label>Crédito: {{ client.remainingCredit | number: '1.2-2'}}€ </ion-label>
+  <ion-list>
+    <ion-item *ngFor="let client of clients">
+
+      <ion-avatar slot="start">
+        <img src={{client.photoUrl}}>
+      </ion-avatar>
+
+      <ion-label>
+        {{ client.name}} {{client.surname}}<br>
+        <ion-text color="medium">{{client.lastActive  | date:"dd.MM.yyyy" }}</ion-text>
+      </ion-label>
+
+      <ion-label>
+        <ion-chip color="success" *ngIf="client.remainingCredit > 0">
+          <ion-text><h2>Total: {{client.remainingCredit | number: '1.2-2'}}€</h2></ion-text>
         </ion-chip>
-       
+        <ion-chip color="danger" *ngIf="client.remainingCredit === 0">
+          <ion-text><h2>Total: {{client.remainingCredit | number: '1.2-2'}}€</h2></ion-text>
+        </ion-chip>
+      </ion-label>
+
     </ion-item>
-
   </ion-list>
 
 </ion-content>

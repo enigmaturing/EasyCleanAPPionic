@@ -11,6 +11,7 @@ import { AlertsService } from '../../services/alerts.service';
 export class ClientsListPage implements OnInit {
 
   clients: Partial<UserDetailed>[] = [{}];
+  isData = false;
 
   constructor(private usersService: UserService,
               private alertsService: AlertsService) { }
@@ -20,8 +21,10 @@ export class ClientsListPage implements OnInit {
   }
 
   getClients() {
+    this.isData = false;
     this.usersService.getClients().subscribe((clients: UserDetailed[]) => {
       this.clients = clients;  
+      this.isData = true;
     }, error => {
       this.alertsService.presentToast('Error retrieving clients');
     });
