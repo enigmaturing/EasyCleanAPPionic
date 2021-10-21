@@ -1,6 +1,6 @@
 <ion-content class="ion-padding">
 
-  <ion-img class="logo" src="http://www.javiergonzalez.de/easyclean/logo.png"></ion-img>
+  <img src="../../../assets/img/mcclean-logo.png" class="logo center">
 
   <form #loginForm="ngForm" (ngSubmit)="login()">
     <ion-item>
@@ -16,6 +16,9 @@
     <ion-button class="ion-margin-top" shape="round" expand="block" type="submit" [disabled]="loginForm.invalid">Login</ion-button>
     <ion-button class="ion-margin-top" shape="round" fill="outline" expand="block" [routerLink]="['/register']">Regístraste</ion-button>
   </form>
+
+  <img src="../../../assets/img/signin_google.png" class="sigingoogle center" *ngIf="isFbAndGoogleSignInVisible">
+  <img src="../../../assets/img/signin-facebook.png" class="siginfacebook center" *ngIf="isFbAndGoogleSignInVisible">
 
   <div class="parent">
     <ng-lottie height="100%" class="lottie" [options]="optionsOk" (complete)="completedOk($event)" (animationCreated)="animationOkCreated($event)"></ng-lottie>

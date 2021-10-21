@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
   animationItemOk: AnimationItem;
   animationItemNok: AnimationItem;
   showLoadingSpinner = false;
+  isFbAndGoogleSignInVisible = true;
 
   animationOkCreated(animationItem: AnimationItem): void {
     this.animationItemOk = animationItem;
@@ -62,6 +63,7 @@ export class LoginPage implements OnInit {
     //   ...this.options, // In case you have other properties that you want to copy
     //   path: '/assets/animation2.json',
     // };
+    this.isFbAndGoogleSignInVisible = false;
     this.showLoadingSpinner = true;
     this.authService.login(this.model).subscribe(next => {
       this.showLoadingSpinner = false;
@@ -82,6 +84,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.isFbAndGoogleSignInVisible = true;
     /*
     this.showLoadingSpinner = true;
     this.authService.login(this.modelDebug).subscribe(next => {
