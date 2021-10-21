@@ -11,13 +11,16 @@ import { MachineUsageDetailed } from '../../models/machine-usage-detailed';
 export class SalesListPage implements OnInit {
 
   machineUsages: MachineUsageDetailed[];
+  isData = false;
 
   constructor(private salesService: SalesService,
               private alertsService: AlertsService) { }
 
   loadMachineUsages() {
+    this.isData = false;
     this.salesService.getMachineUsages().subscribe((machineUsages: MachineUsageDetailed[]) => {
       this.machineUsages = machineUsages;
+      this.isData = true;
     }, error => {
       this.alertsService.presentToast(error);
     });

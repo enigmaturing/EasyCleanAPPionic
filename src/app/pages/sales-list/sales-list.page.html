@@ -8,17 +8,43 @@
 </ion-header>
 
 <ion-content fullscreen="true" slot="fixed" >
+
+  <div *ngIf="!isData">
+    <ion-list>
+      <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
   <ion-list>
     <ion-item *ngFor="let machineUsage of machineUsages">
+
       <ion-thumbnail slot="start">
         <img src={{machineUsage.iconUrl}}>
       </ion-thumbnail>
+
       <ion-label>
         {{ machineUsage.date | date:"dd.MM.yyyy (HH:mm)" }}<br>
-        {{ machineUsage.quantityOfServicesBooked }} x "{{ machineUsage.tariffName}}"<br>
-        Total paid: {{ machineUsage.totalAmountPaid }}€<br>
-        Duration: {{ machineUsage.totalDurationInMinutes }}min.<br>
+        <ion-text color="medium">Tarifa: {{ machineUsage.tariffName}}</ion-text>
       </ion-label>
+
+      <ion-label>
+        <ion-chip color="primary">
+          <ion-text><h2>Total: {{ machineUsage.totalAmountPaid | number: '1.2-2'}}€</h2></ion-text>
+        </ion-chip>
+      </ion-label>
+
     </ion-item>
   </ion-list>
 </ion-content>
