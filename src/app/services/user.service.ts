@@ -21,4 +21,8 @@ export class UserService {
   getUser(id): Observable<UserDetailed> {
     return this.http.get<UserDetailed>(this.baseUrl + id);
   }
+
+  getClients(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + "role/client");
+  }
 }
